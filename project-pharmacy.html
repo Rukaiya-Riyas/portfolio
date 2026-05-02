@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HealixPharm Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #F5F0E8;
+  color: #1A1410;
+}
+
+/* HERO */
+.hero {
+  padding: 6rem 3rem;
+  background: linear-gradient(135deg, #4A5D73, #6D7F99);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display';
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  max-width: 750px;
+  opacity: 0.9;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* 💊 PILLS */
+.pill {
+  position: absolute;
+  width: 70px;
+  height: auto;
+  opacity: 0;
+  animation: floatPill 12s infinite ease-in-out;
+}
+
+/* floating motion */
+@keyframes floatPill {
+  0% {
+    transform: translateY(140px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-320px) translateX(80px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* positions */
+.pill1 {
+  left: 8%;
+  bottom: -40px;
+  animation-delay: 0s;
+}
+
+.pill2 {
+  left: 30%;
+  bottom: -40px;
+  animation-delay: 3s;
+}
+
+.pill3 {
+  left: 60%;
+  bottom: -40px;
+  animation-delay: 5s;
+}
+
+.pill4 {
+  left: 85%;
+  bottom: -40px;
+  animation-delay: 7s;
+}
+
+/* SECTIONS */
+.section {
+  padding: 3rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(74,93,115,0.2);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 1rem;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  background: #4A5D73;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-top: 1rem;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #3a4658;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+
+  <!-- 💊 FLOATING PILLS -->
+  <svg class="pill pill1" viewBox="0 0 100 40">
+    <rect x="10" y="10" width="80" height="20" rx="10" fill="#4A90E2"/>
+    <rect x="50" y="10" width="40" height="20" rx="10" fill="#7FB3FF"/>
+  </svg>
+
+  <svg class="pill pill2" viewBox="0 0 100 40">
+    <rect x="10" y="10" width="80" height="20" rx="10" fill="#2F80ED"/>
+    <rect x="10" y="10" width="40" height="20" rx="10" fill="#A5C9FF"/>
+  </svg>
+
+  <svg class="pill pill3" viewBox="0 0 100 40">
+    <rect x="10" y="10" width="80" height="20" rx="10" fill="#5B9BD5"/>
+    <rect x="60" y="10" width="30" height="20" rx="10" fill="#C6E2FF"/>
+  </svg>
+
+  <svg class="pill pill4" viewBox="0 0 100 40">
+    <rect x="10" y="10" width="80" height="20" rx="10" fill="#1E6FB8"/>
+    <rect x="45" y="10" width="45" height="20" rx="10" fill="#9CCBFF"/>
+  </svg>
+
+  <div class="tag">SDGP Group Project (2025–Present)</div>
+  <h1>HealixPharm</h1>
+  <p>
+    AI-Enhanced Pharmacy Management System designed to automate pharmacy operations including medicine ordering, doctor booking, WhatsApp chatbot communication, and admin management.
+  </p>
+
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="card">
+    <h2>Overview</h2>
+    A full-stack healthcare platform that integrates web application, WhatsApp chatbot, and admin system into a single ecosystem for pharmacies and patients.
+  </div>
+
+  <div class="card">
+    <h2>My Role</h2>
+
+    <b>UI/UX Design</b><br>
+    - Created wireframes for system flow<br>
+    - Designed high-fidelity UI in Figma<br>
+    - Focused on healthcare usability & clarity<br><br>
+
+    <b>Backend Development</b><br>
+    - Built FastAPI backend for appointment system<br>
+    - Integrated WhatsApp bot using Twilio API<br>
+    - Developed REST APIs for booking, payments, admin<br><br>
+
+    <b>Frontend Development</b><br>
+    - Built React + Next.js booking system<br>
+    - Created landing page & reusable components<br>
+    - Styled using Tailwind CSS<br><br>
+
+    <b>Testing</b><br>
+    - API testing & debugging<br>
+    - Frontend-backend integration testing
+  </div>
+
+  <div class="card">
+    <h2>Key Features</h2>
+
+    Doctor Appointment Booking System<br>
+    WhatsApp Chatbot for medicine ordering<br>
+    Admin Dashboard for management<br>
+    Payment workflow integration<br>
+    Real-time API communication
+  </div>
+
+  <div class="card">
+    <h2>System Architecture</h2>
+    Built using a microservice-inspired architecture with FastAPI backend, React frontend, and integrated third-party services like Twilio for messaging automation.
+  </div>
+
+  <div class="card">
+    <h2>Technologies Used</h2>
+    Python · FastAPI · MySQL · SQLAlchemy · Twilio API · React · Next.js · TypeScript · Tailwind CSS · Figma · GitHub · Postman
+  </div>
+
+  <div class="card">
+    <h2>What I Learned</h2>
+    ✔ Full-stack system design<br>
+    ✔ API architecture & integration<br>
+    ✔ WhatsApp bot automation<br>
+    ✔ Scalable backend development<br>
+    ✔ Team collaboration using Git workflows
+  </div>
+
+  <div class="card">
+    <h2>Outcome</h2>
+    A complete healthcare automation system demonstrating real-world full-stack development, API design, and system integration skills.
+  </div>
+
+  <a class="btn" href="https://github.com/Iqbaal-pro/HealixPharm" target="_blank">
+    View GitHub Repository
+  </a>
+
+</div>
+
+</body>
+</html>

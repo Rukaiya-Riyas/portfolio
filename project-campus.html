@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Smart Campus API Case Study</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: #F5F0E8;
+  color: #1A1410;
+}
+
+/* HERO */
+.hero {
+  padding: 6rem 3rem;
+  background: linear-gradient(135deg, #2B3442, #4A5D73);
+  color: white;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display';
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero p {
+  max-width: 800px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* SECTION */
+.section {
+  padding: 3rem;
+  max-width: 1050px;
+  margin: auto;
+}
+
+h2 {
+  font-family: 'Playfair Display';
+  color: #4A5D73;
+  margin-bottom: 1rem;
+}
+
+/* CARD STYLE */
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: 0.3s ease;
+  border: 1px solid rgba(74,93,115,0.08);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(74,93,115,0.18);
+  border-color: rgba(74,93,115,0.25);
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 1rem;
+}
+
+/* CODE STYLE */
+.code {
+  font-family: monospace;
+  background: #eef2f7;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+/* BUTTON */
+.btn {
+  display: inline-block;
+  padding: 0.9rem 1.5rem;
+  background: #4A5D73;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+  margin-top: 1rem;
+}
+
+.btn:hover {
+  background: #2B3442;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="tag">University of Westminster — Client Server Architecture</div>
+  <h1>Smart Campus Sensor API</h1>
+  <p>
+    A fully functional RESTful backend system that simulates a smart university campus,
+    managing rooms, IoT sensors, and live sensor readings using a scalable Java-based architecture.
+  </p>
+</div>
+
+<!-- CONTENT -->
+<div class="section">
+
+  <div class="card">
+    <h2>Project Overview</h2>
+    A backend REST API built using Java, JAX-RS, Jersey, and Grizzly that simulates a smart campus system.
+    It manages rooms, sensors, and real-time sensor readings for a university environment.
+  </div>
+
+  <div class="card">
+    <h2>System Concept</h2>
+    The system models a real-world IoT infrastructure:<br><br>
+
+    Rooms → Lecture halls, labs, study spaces<br>
+    Sensors → Temperature, CO2, occupancy devices<br>
+    Sensor Readings → Live data collected over time
+  </div>
+
+  <div class="card">
+    <h2>REST API Design</h2>
+
+    <span class="code">/api/v1/rooms</span> → Manage rooms<br>
+    <span class="code">/api/v1/sensors</span> → Manage sensors<br>
+    <span class="code">/api/v1/sensors/{id}/readings</span> → Sensor data history
+  </div>
+
+  <!-- NEW -->
+  <div class="card">
+    <h2>API Testing Examples</h2>
+
+    <b>Get All Rooms</b><br>
+    <span class="code">GET /api/v1/rooms</span><br>
+    Response: 200 OK<br><br>
+
+    <b>Sample Response</b><br>
+    <span class="code">
+    {<br>
+      "roomId": "L001",<br>
+      "name": "Lecture Hall A",<br>
+      "capacity": 120<br>
+    }
+    </span><br><br>
+
+    <b>Sensor Readings</b><br>
+    <span class="code">GET /api/v1/sensors/12/readings</span>
+  </div>
+
+  <!-- NEW -->
+  <div class="card">
+    <h2>System Architecture Flow</h2>
+
+    Client (Postman / Browser)<br>
+    ↓<br>
+    JAX-RS REST Layer (Jersey)<br>
+    ↓<br>
+    Service Layer (Business Logic)<br>
+    ↓<br>
+    In-Memory Data Store (ConcurrentHashMap)
+  </div>
+
+  <div class="card">
+    <h2>Architecture Highlights</h2>
+    ✔ Embedded Grizzly HTTP Server<br>
+    ✔ Jersey JAX-RS REST framework<br>
+    ✔ Maven Shade build (single JAR)<br>
+    ✔ ConcurrentHashMap in-memory datastore
+  </div>
+
+  <div class="card">
+    <h2>Advanced Design Patterns</h2>
+    ✔ Sub-resource locators for nested sensor readings<br>
+    ✔ HATEOAS navigation support<br>
+    ✔ Centralized exception handling<br>
+    ✔ Request/response logging filter
+  </div>
+
+  <div class="card">
+    <h2>Error Handling System</h2>
+
+    409 → Conflict (sensor blocking room deletion)<br>
+    422 → Invalid request payload<br>
+    403 → Forbidden operation<br>
+    500 → Safe global error handler (no stack traces exposed)
+  </div>
+
+  <!-- NEW -->
+  <div class="card">
+    <h2>Design Decisions</h2>
+
+    ✔ Why JAX-RS?<br>
+    Lightweight and annotation-driven REST framework.<br><br>
+
+    ✔ Why Grizzly?<br>
+    Embedded server for quick deployment without external setup.<br><br>
+
+    ✔ Why ConcurrentHashMap?<br>
+    Ensures thread-safe operations for concurrent requests.
+  </div>
+
+  <div class="card">
+    <h2>Key Technical Strengths</h2>
+    ✔ Thread-safe concurrent data handling<br>
+    ✔ RESTful best practices (status codes, idempotency)<br>
+    ✔ Secure API design principles<br>
+    ✔ Clean separation of concerns
+  </div>
+
+  <div class="card">
+    <h2>What I Learned</h2>
+    ✔ REST API design at production level depth<br>
+    ✔ JAX-RS framework internals<br>
+    ✔ Thread safety & concurrency<br>
+    ✔ Secure backend architecture principles<br>
+    ✔ Clean system design
+  </div>
+
+  <div class="card">
+    <h2>Project Outcome</h2>
+    A production-style REST API demonstrating real-world backend engineering practices,
+    including scalability, security, and clean architecture design.
+  </div>
+
+  <a class="btn" href="https://github.com/Rukaiya-Riyas/smart-campus-api" target="_blank">
+    View GitHub Repository
+  </a>
+
+</div>
+
+</body>
+</html>
