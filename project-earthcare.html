@@ -2,295 +2,294 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>EarthCare Case Study</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EarthCare — Rukaiya Riyas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: 'DM Sans', sans-serif;
-  background: #F5F0E8;
-  color: #1A1410;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream: #F5F0E8; --cream-dark: #EDE6D6;
+  --ink: #1A1410; --ink-soft: #3D3530; --ink-muted: #6B5E56;
+  --rust: #4A5D73; --rust-light: #6D7F99;
+  --gold: #8A9BAF; --gold-light: #B7C3D1;
+  --border: rgba(26,20,16,0.12);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
 }
-
-/* HERO */
-.hero {
-  padding: 6rem 3rem;
-  background: linear-gradient(135deg, #4A6741, #2F3D2A);
-  color: white;
-  position: relative;
-  overflow: hidden;
+body { font-family: var(--sans); background: var(--cream); color: var(--ink); overflow-x: hidden; cursor: none; }
+.cursor { width:12px;height:12px;background:var(--rust);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transition:transform 0.15s ease;mix-blend-mode:multiply; }
+.cursor-ring { width:36px;height:36px;border:1.5px solid var(--rust);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transition:all 0.08s ease;opacity:0.5; }
+.cursor.hover { transform:scale(2.5); }
+.cursor-ring.hover { transform:scale(0.6);opacity:1; }
+nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 4rem;backdrop-filter:blur(12px);background:rgba(245,240,232,0.85);border-bottom:0.5px solid var(--border);transition:padding 0.3s ease; }
+nav.scrolled { padding:1rem 4rem; }
+.nav-logo { font-family:var(--serif);font-size:1.1rem;letter-spacing:0.02em;color:var(--ink);text-decoration:none; }
+.nav-links { display:flex;gap:2rem;position:static;flex-direction:row;background:transparent;box-shadow:none;backdrop-filter:none;padding:0; }
+.nav-links a { font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;position:relative; }
+.nav-links a::after { content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--rust);transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease; }
+.nav-links a:hover { color:var(--rust); }
+.nav-links a:hover::after { transform:scaleX(1); }
+.nav-cta { font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream);background:var(--ink);border:none;padding:0.6rem 1.4rem;cursor:none;text-decoration:none;transition:background 0.2s; }
+.nav-cta:hover { background:var(--rust); }
+.menu-toggle { display:none;font-size:1.8rem;cursor:pointer;color:var(--ink); }
+@media (max-width:768px) {
+  .menu-toggle { display:block; }
+  nav { padding:1.2rem 1.5rem; }
+  .nav-links { display:none;flex-direction:column;position:absolute;top:70px;right:20px;background:#2B3442;padding:1rem;border-radius:12px;gap:1rem; }
+  .nav-links.active { display:flex; }
+  .nav-links a { color:#fff; }
 }
-
-.hero h1 {
-  font-family: 'Playfair Display';
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+/* PROJECT HERO */
+.proj-hero {
+  min-height: 55vh;
+  display: flex; align-items: flex-end;
+  padding: 8rem 4rem 4rem;
+  position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--hero-a, #4A5D73), var(--hero-b, #6D7F99));
+  color: var(--cream);
 }
-
-.hero p {
-  max-width: 700px;
-  opacity: 0.9;
+.proj-hero-bg {
+  position:absolute;font-family:var(--serif);font-size:20vw;font-style:italic;color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,0.05);top:50%;left:50%;transform:translate(-50%,-55%);
+  white-space:nowrap;pointer-events:none;user-select:none;
 }
-
-/* TAGS */
-.tag {
-  display: inline-block;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid rgba(255,255,255,0.4);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
+.proj-hero-content { position:relative;z-index:1;max-width:850px; }
+.hero-tag {
+  display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(245,240,232,0.65);margin-bottom:1.25rem;font-family:var(--mono);
 }
-
-.leaf, .flower {
-  position: absolute;
-  width: 34px;
-  height: 34px;
-  opacity: 0;
-  animation: floatUp 14s infinite ease-in-out;
-}
-
-/* 🌿 natural movement */
-@keyframes floatUp {
-  0% {
-    transform: translateY(140px) translateX(0) rotate(0deg);
-    opacity: 0;
-  }
-  15% { opacity: 0.9; }
-  100% {
-    transform: translateY(-360px) translateX(120px) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-/* 🌿 LEAVES (more spread + natural timing) */
-.leaf1 { left: 5%;  animation-delay: 0s; }
-.leaf2 { left: 25%; animation-delay: 2s; }
-.leaf3 { left: 55%; animation-delay: 4s; }
-.leaf4 { left: 80%; animation-delay: 6s; }
-
-/* 🌸 FLOWERS (different personalities) */
-.flower {
-  width: 30px;
-  animation-duration: 16s;
-}
-
-.flower1 { left: 15%; animation-delay: 1s; }
-.flower2 { left: 35%; animation-delay: 3s; }
-.flower3 { left: 65%; animation-delay: 5s; }
-.flower4 { left: 90%; animation-delay: 7s; }
-
-/* SECTIONS */
-.section {
-  padding: 3rem;
-  max-width: 1000px;
-  margin: auto;
-}
-
-h2 {
-  font-family: 'Playfair Display';
-  margin-bottom: 1rem;
-  color: #4A6741;
-}
-
-/* CARDS */
+.hero-tag::before { content:'';display:inline-block;width:20px;height:1px;background:rgba(245,240,232,0.45); }
+h1.proj-title { font-family:var(--serif);font-size:clamp(2.8rem,7vw,5.5rem);line-height:1;color:var(--cream);margin-bottom:0.4em; }
+h1.proj-title em { font-style:italic;color:var(--gold-light); }
+.proj-subtitle { font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.4rem);color:rgba(245,240,232,0.7);font-style:italic;margin-bottom:1.5rem; }
+.proj-desc { font-size:0.95rem;color:rgba(245,240,232,0.7);line-height:1.8;max-width:580px;margin-bottom:2.5rem; }
+.proj-actions { display:flex;gap:1rem;align-items:center;flex-wrap:wrap; }
+.btn-primary { background:rgba(255,255,255,0.12);color:var(--cream);padding:0.85rem 1.8rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;border:1px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);transition:all 0.25s;cursor:none;border-radius:3px; }
+.btn-primary:hover { background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.6);transform:translateY(-2px); }
+.btn-secondary { color:rgba(245,240,232,0.75);padding:0.85rem 1.8rem;font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.3);transition:all 0.2s;cursor:none; }
+.btn-secondary:hover { color:var(--cream);border-color:var(--gold-light); }
+.back-btn { position:absolute;top:22px;left:25px;padding:0.45rem 1rem;background:rgba(255,255,255,0.1);color:rgba(245,240,232,0.75);border:1px solid rgba(255,255,255,0.25);border-radius:8px;backdrop-filter:blur(8px);text-decoration:none;font-size:0.8rem;font-family:var(--mono);letter-spacing:0.06em;transition:0.25s ease;cursor:none; }
+.back-btn:hover { background:rgba(255,255,255,0.2);color:var(--cream);transform:translateX(-3px); }
+/* CONTENT SECTIONS */
+.proj-section { padding: 5rem 4rem; }
+.proj-section.dark { background:var(--ink);color:var(--cream); }
+.proj-section.muted { background:var(--cream-dark); }
+.section-label { font-family:var(--mono);font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--rust);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem; }
+.section-label::before { content:'';display:inline-block;width:20px;height:1px;background:var(--rust); }
+.dark .section-label { color:var(--rust-light); }
+.dark .section-label::before { background:var(--rust-light); }
+h2.section-title { font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.1;color:var(--ink);margin-bottom:2.5rem; }
+h2.section-title em { font-style:italic;color:var(--rust); }
+.dark h2.section-title { color:var(--cream); }
+.dark h2.section-title em { color:var(--rust-light); }
+/* CARDS — glassmorphism like main page edu-cards */
+.info-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem; }
+.info-grid.two-col { grid-template-columns:1fr 1fr; }
+.info-grid.three-col { grid-template-columns:repeat(3,1fr); }
 .card {
-  background: white;
-  padding: 2rem;
-  border-radius: 16px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: 0.3s ease;
+  position:relative;padding:2rem;border-radius:16px;
+  background:rgba(255,255,255,0.45);backdrop-filter:blur(12px);
+  border:1px solid rgba(74,93,115,0.12);overflow:hidden;transition:all 0.35s ease;
 }
-
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(74,103,65,0.25);
-}
-
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 1rem;
-}
-
-img {
-  width: 100%;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-
-img:hover {
-  transform: scale(1.03);
-}
-
-/* BUTTON */
-.btn {
-  display: inline-block;
-  padding: 0.8rem 1.4rem;
-  background: #4A6741;
-  color: white;
-  text-decoration: none;
-  border-radius: 10px;
-  margin-top: 1rem;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #3b5234;
+.card::before { content:"";position:absolute;inset:-1px;border-radius:16px;background:linear-gradient(120deg,transparent,rgba(74,93,115,0.2),transparent);opacity:0;transition:opacity 0.4s ease; }
+.card::after { content:"";position:absolute;inset:0;border-radius:16px;background:radial-gradient(circle at top left,rgba(74,93,115,0.12),transparent 60%);opacity:0;transition:opacity 0.4s ease; }
+.card:hover { transform:translateY(-6px) scale(1.01);border-color:rgba(74,93,115,0.3);box-shadow:0 20px 40px rgba(74,93,115,0.15); }
+.card:hover::before, .card:hover::after { opacity:1; }
+.card > * { position:relative;z-index:1; }
+.dark .card { background:rgba(255,255,255,0.05);border-color:rgba(245,240,232,0.1); }
+.dark .card::before { background:linear-gradient(120deg,transparent,rgba(109,127,153,0.2),transparent); }
+.dark .card:hover { border-color:rgba(109,127,153,0.35); }
+.card-label { font-family:var(--mono);font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--rust);margin-bottom:0.6rem; }
+.dark .card-label { color:var(--rust-light); }
+.card-title { font-family:var(--serif);font-size:1.15rem;margin-bottom:0.75rem;color:var(--ink); }
+.dark .card-title { color:var(--cream); }
+.card-body { font-size:0.88rem;line-height:1.75;color:var(--ink-soft); }
+.dark .card-body { color:rgba(245,240,232,0.65); }
+/* Role list items */
+.role-item { display:flex;gap:1rem;padding:1rem 0;border-bottom:0.5px solid var(--border); }
+.role-item:last-child { border-bottom:none; }
+.dark .role-item { border-color:rgba(245,240,232,0.08); }
+.role-num { font-family:var(--mono);font-size:0.65rem;color:var(--rust);flex-shrink:0;padding-top:0.15rem;letter-spacing:0.1em; }
+.dark .role-num { color:var(--rust-light); }
+.role-content h3 { font-family:var(--serif);font-size:1rem;margin-bottom:0.35rem;color:var(--ink); }
+.dark .role-content h3 { color:var(--cream); }
+.role-content p { font-size:0.85rem;line-height:1.7;color:var(--ink-soft); }
+.dark .role-content p { color:rgba(245,240,232,0.6); }
+/* Tech tags */
+.tags-wrap { display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1rem; }
+.tech-tag { font-family:var(--mono);font-size:0.65rem;padding:0.3rem 0.75rem;border:0.5px solid rgba(74,93,115,0.25);border-radius:6px;color:var(--ink-muted);background:rgba(255,255,255,0.6); }
+.dark .tech-tag { border-color:rgba(245,240,232,0.15);color:rgba(245,240,232,0.55);background:rgba(255,255,255,0.05); }
+/* Two-col layout */
+.two-col-layout { display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start; }
+/* Images */
+.img-card { border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.1);transition:transform 0.3s; }
+.img-card:hover { transform:scale(1.02); }
+.img-card img { width:100%;display:block; }
+.img-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.25rem;margin-top:1.5rem; }
+/* Code block */
+.code-block { font-family:var(--mono);background:#eef2f7;padding:0.3rem 0.6rem;border-radius:6px;font-size:0.82rem;display:inline-block;color:var(--ink-soft); }
+/* Reveal animations */
+.reveal { opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1;transform:translateY(0); }
+/* Footer */
+footer { background:var(--ink);border-top:0.5px solid rgba(245,240,232,0.08);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;color:rgba(245,240,232,0.35);font-size:0.72rem;font-family:var(--mono);letter-spacing:0.08em;position:relative;z-index:1; }
+footer span { color:var(--rust-light); }
+html { scroll-behavior:smooth; }
+.back-to-top { position:fixed;bottom:25px;right:25px;width:45px;height:45px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(74,93,115,0.9);color:white;text-decoration:none;font-size:18px;font-weight:bold;box-shadow:0 10px 25px rgba(0,0,0,0.2);cursor:none; }
+@media (max-width:768px) {
+  .proj-hero { padding:7rem 1.5rem 3rem; }
+  .proj-section { padding:4rem 1.5rem; }
+  .info-grid.two-col, .info-grid.three-col, .two-col-layout { grid-template-columns:1fr; gap:1.5rem; }
+  footer { flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem; }
 }
 </style>
 </head>
-
 <body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<nav id="nav">
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <a href="rukaiya-portfolio.html" class="nav-logo">RR</a>
+  <div class="nav-links" id="navLinks">
+    <a href="rukaiya-portfolio.html#about">About</a>
+    <a href="rukaiya-portfolio.html#projects">Projects</a>
+    <a href="rukaiya-portfolio.html#education">Education</a>
+    <a href="rukaiya-portfolio.html#contact">Contact</a>
+  </div>
+  <a href="mailto:Rukaiyariyas119@gmail.com" class="nav-cta">Email</a>
+</nav>
 
-<!-- HERO -->
-<div class="hero">
-
- 
-    <!-- 🌿 LEAVES -->
-<svg class="leaf leaf1" viewBox="0 0 24 24">
-  <path d="M12 2C8 6 6 10 6 14c0 4 3 8 6 8s6-4 6-8c0-4-2-8-6-12z" fill="#4CAF50"/>
-</svg>
-
-<svg class="leaf leaf2" viewBox="0 0 24 24">
-  <path d="M12 2C8 6 6 10 6 14c0 4 3 8 6 8s6-4 6-8c0-4-2-8-6-12z" fill="#66BB6A"/>
-</svg>
-
-<svg class="leaf leaf3" viewBox="0 0 24 24">
-  <path d="M12 2C8 6 6 10 6 14c0 4 3 8 6 8s6-4 6-8c0-4-2-8-6-12z" fill="#81C784"/>
-</svg>
-
-<svg class="leaf leaf4" viewBox="0 0 24 24">
-  <path d="M12 2C8 6 6 10 6 14c0 4 3 8 6 8s6-4 6-8c0-4-2-8-6-12z" fill="#43A047"/>
-</svg>
-
-<!-- 🌸 FLOWER TYPE 1 (simple daisy) -->
-<svg class="flower flower1" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="3" fill="#FFD54F"/>
-  <circle cx="12" cy="4" r="2.5" fill="#A5D6A7"/>
-  <circle cx="20" cy="12" r="2.5" fill="#A5D6A7"/>
-  <circle cx="12" cy="20" r="2.5" fill="#A5D6A7"/>
-  <circle cx="4" cy="12" r="2.5" fill="#A5D6A7"/>
-</svg>
-
-<!-- 🌸 FLOWER TYPE 2 (pink bloom) -->
-<svg class="flower flower2" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="3" fill="#F48FB1"/>
-  <circle cx="12" cy="4" r="2.5" fill="#F8BBD0"/>
-  <circle cx="20" cy="12" r="2.5" fill="#F8BBD0"/>
-  <circle cx="12" cy="20" r="2.5" fill="#F8BBD0"/>
-  <circle cx="4" cy="12" r="2.5" fill="#F8BBD0"/>
-</svg>
-
-<!-- 🌸 FLOWER TYPE 3 (white/soft eco flower) -->
-<svg class="flower flower3" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="3" fill="#FFFFFF"/>
-  <circle cx="12" cy="4" r="2.5" fill="#C8E6C9"/>
-  <circle cx="20" cy="12" r="2.5" fill="#C8E6C9"/>
-  <circle cx="12" cy="20" r="2.5" fill="#C8E6C9"/>
-  <circle cx="4" cy="12" r="2.5" fill="#C8E6C9"/>
-</svg>
-
-<!-- 🌸 FLOWER TYPE 4 (yellow mini flower) -->
-<svg class="flower flower4" viewBox="0 0 24 24">
-  <circle cx="12" cy="12" r="3" fill="#FFEB3B"/>
-  <circle cx="12" cy="4" r="2.5" fill="#DCEDC8"/>
-  <circle cx="20" cy="12" r="2.5" fill="#DCEDC8"/>
-  <circle cx="12" cy="20" r="2.5" fill="#DCEDC8"/>
-  <circle cx="4" cy="12" r="2.5" fill="#DCEDC8"/>
-</svg>
-
-  <div class="tag">UX/UI Case Study · Figma Prototype</div>
-  <h1>EarthCare</h1>
-  <p>
-    A sustainability-focused mobile application designed to encourage eco-friendly habits through recycling, volunteering, and community engagement.
-  </p>
-
+<div id="top" class="proj-hero" style="--hero-a:#4A5D73;--hero-b:#8A9BAF;">
+  <div class="proj-hero-bg" aria-hidden="true">EarthCare</div>
+  <a href="rukaiya-portfolio.html" class="back-btn">← Back</a>
+  <div class="proj-hero-content">
+    <div class="hero-tag animate-in delay-1">UX/UI Case Study · Figma Prototype</div>
+    <h1 class="proj-title animate-in delay-2">Earth<em>Care</em></h1>
+    <p class="proj-subtitle animate-in delay-3">Sustainability App Design</p>
+    <p class="proj-desc animate-in delay-4">
+      A high-fidelity mobile app prototype that encourages eco-friendly habits through recycling tracking, volunteering, and community engagement — aligned with UN SDGs 11 &amp; 12.
+    </p>
+    <div class="proj-actions animate-in delay-4">
+      <a class="btn-primary" href="https://www.figma.com/proto/TBupc0C0PIeBMwL4aGOYe4/EarthCare---High-Fidelity-Prototype--CW2-?node-id=133-169&t=5FinMhb8ushgdPVm-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=8%3A3&show-proto-sidebar=1" target="_blank">View Figma Prototype </a>
+    </div>
+  </div>
 </div>
 
 <!-- OVERVIEW -->
-<div class="section">
-
-  <div class="card">
-    <h2>Overview</h2>
-    EarthCare is a high-fidelity mobile app prototype built in Figma that promotes sustainable living through simple, engaging, and accessible user experiences aligned with UN SDGs 11 & 12.
+<section class="proj-section reveal">
+  <div class="section-label">Overview</div>
+  <h2 class="section-title">The <em>Problem</em></h2>
+  <div class="two-col-layout">
+    <p style="font-size:1rem;line-height:1.9;color:var(--ink-soft);">
+      Many people want to live sustainably but lack a single platform that combines recycling guidance, volunteering opportunities, and ongoing motivation. EarthCare addresses this by unifying these needs into a minimal, accessible mobile experience.
+    </p>
+    <div class="info-grid" style="margin-top:0;">
+      <div class="card reveal">
+        <div class="card-label">Target Users</div>
+        <div class="card-body">Students and young adults · Environmentally conscious individuals · Beginners in sustainability practices</div>
+      </div>
+      <div class="card reveal">
+        <div class="card-label">Deliverable</div>
+        <div class="card-body">High-fidelity Figma prototype with user-tested flows, accessibility-checked colour system, and iterated navigation.</div>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Problem Statement</h2>
-    Many users want to live sustainably but lack a simple platform that combines recycling guidance, volunteering, and motivation in one place.
+<!-- UX APPROACH -->
+<section class="proj-section dark reveal">
+  <div class="section-label">Design Process</div>
+  <h2 class="section-title">UX <em>Approach</em></h2>
+  <div class="info-grid three-col">
+    <div class="card reveal">
+      <div class="card-label">Cognitive Load</div>
+      <div class="card-title">Minimal UI</div>
+      <div class="card-body">Reduced decision fatigue through clear hierarchy, familiar navigation patterns, and progressive disclosure.</div>
+    </div>
+    <div class="card reveal">
+      <div class="card-label">Accessibility</div>
+      <div class="card-title">Colour Contrast</div>
+      <div class="card-body">All colour pairings tested against WCAG AA standards. Clear system feedback messages for every action.</div>
+    </div>
+    <div class="card reveal">
+      <div class="card-label">Research</div>
+      <div class="card-title">User Testing</div>
+      <div class="card-body">Questionnaire-based testing confirmed ease of use. Resulted in added search functionality and simplified registration flow.</div>
+    </div>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Project Goals</h2>
-    ✔ Simplify recycling tracking and volunteering registration<br>
-    ✔ Improve user engagement through feedback systems<br>
-    ✔ Reduce cognitive load with minimal UI<br>
-    ✔ Ensure accessibility for all users
+<!-- KEY FEATURES -->
+<section class="proj-section muted reveal">
+  <div class="section-label">Features</div>
+  <h2 class="section-title">What <em>EarthCare</em> Does</h2>
+  <div class="info-grid two-col">
+    <div class="card reveal">
+      <div class="card-label">Core Features</div>
+      <div class="card-body">
+        Recycling tracker with activity logs<br>
+        Volunteer event browsing &amp; registration<br>
+        Eco knowledge hub<br>
+        Gamified leaderboard system<br>
+        User profile &amp; progress tracking
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-label">Iterations Made</div>
+      <div class="card-body">
+        Improved navigation clarity after testing<br>
+        Replaced unclear filters with a search system<br>
+        Simplified volunteer registration flow<br>
+        Enhanced feedback messaging throughout
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Target Users</h2>
-    Students and young adults<br>
-    Environmentally conscious individuals<br>
-    Beginners in sustainability practices
+<!-- TOOLS + OUTCOME -->
+<section class="proj-section dark reveal">
+  <div class="section-label">Outcome</div>
+  <h2 class="section-title">What Was <em>Achieved</em></h2>
+  <div class="two-col-layout">
+    <div class="card reveal">
+      <div class="card-label">Tools Used</div>
+      <div class="tags-wrap">
+        <span class="tech-tag">Figma</span><span class="tech-tag">UX Research</span>
+        <span class="tech-tag">Usability Testing</span><span class="tech-tag">Accessibility Testing</span>
+      </div>
+    </div>
+    <div class="card reveal">
+      <div class="card-label">Result</div>
+      <div class="card-body">
+        A clean, intuitive, and accessible sustainability app prototype that promotes eco-friendly behaviour through simple, engaging interactions — validated through real user testing and iterated to address feedback.
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="card">
-    <h2>Key Features</h2>
-     Recycling tracker with logs<br>
-     Volunteer event browsing & registration<br>
-     Eco knowledge hub<br>
-     Gamified leaderboard system<br>
-     User profile & progress tracking
-  </div>
-
-  <div class="card">
-    <h2>UX / UI Approach</h2>
-    Designed using:<br><br>
-    • Cognitive load reduction (minimal UI)<br>
-    • Consistent navigation patterns<br>
-    • Accessibility-focused colour contrast<br>
-    • Clear system feedback messages<br>
-    • Familiar mobile navigation structure
-  </div>
-
-  <div class="card">
-    <h2>Usability Testing</h2>
-    Conducted questionnaire-based testing with users.<br><br>
-    ✔ Easy to use (majority feedback)<br>
-    ✔ Clear system feedback understood by all users<br>
-    ✔ Improvements suggested: search + filtering
-  </div>
-
-  <div class="card">
-    <h2>Iterations & Improvements</h2>
-    ✔ Improved navigation clarity<br>
-    ✔ Added search instead of unclear filters<br>
-    ✔ Simplified volunteer registration flow<br>
-    ✔ Enhanced feedback messaging system
-  </div>
-
-  <div class="card">
-    <h2>Tools Used</h2>
-    Figma • UX Research • Accessibility Testing Tools
-  </div>
-
-  <div class="card">
-    <h2>Outcome</h2>
-    A clean, intuitive, and accessible sustainability app prototype that promotes eco-friendly behaviour through simple and engaging interactions.
-  </div>
-
-  <a class="btn" href="https://www.figma.com/proto/TBupc0C0PIeBMwL4aGOYe4/EarthCare---High-Fidelity-Prototype--CW2-?node-id=133-169&t=5FinMhb8ushgdPVm-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=8%3A3&show-proto-sidebar=1" target="_blank">
-    View Figma Prototype
-  </a>
-
-</div>
-
+<footer>
+  <span>Rukaiya Riyas</span>
+  <span>UI/UX · Frontend · <span>Sri Lanka</span></span>
+  <span>© 2025</span>
+</footer>
+<a href="#top" class="back-to-top">↑</a>
+<script>
+  const cursor=document.getElementById('cursor');
+  const ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=(mx-6)+'px';cursor.style.top=(my-6)+'px';});
+  function animateRing(){rx+=(mx-rx-18)*0.12;ry+=(my-ry-18)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
+  animateRing();
+  document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');ring.classList.add('hover');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');ring.classList.remove('hover');});});
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>50);});
+  const reveals=document.querySelectorAll('.reveal');
+  const observer=new IntersectionObserver(entries=>{entries.forEach((e,i)=>{if(e.isIntersecting){e.target.style.transitionDelay=(i%4)*0.1+'s';e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.1});
+  reveals.forEach(r=>observer.observe(r));
+  function toggleMenu(){document.getElementById('navLinks').classList.toggle('active');}
+  document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
+</script>
 </body>
 </html>

@@ -31,8 +31,6 @@
     --mono: 'DM Mono', monospace;
   }
 
-  html { scroll-behavior: smooth; }
-
   body {
     font-family: var(--sans);
     background: var(--cream);
@@ -708,6 +706,32 @@
     .process-step { flex: 1 1 45%; border: 0.5px solid var(--border); }
     footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 1.5rem; }
   }
+  html {
+  scroll-behavior: smooth;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(74, 93, 115, 0.9);
+  color: white;
+  text-decoration: none;
+
+  font-size: 18px;
+  font-weight: bold;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 <body>
@@ -726,11 +750,11 @@
   <a href="#contact">Contact</a>
 
 </div>
-  <a href="mailto:Rukaiyariyas119@gmail.com" class="nav-cta">Email</a>
+  <a href="public/cv_upload.pdf" target="_blank" class="nav-cta">Resume</a>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="top" id="hero">
   <div class="hero-bg-text" aria-hidden="true">Design</div>
   <div class="hero-content">
     <div class="hero-tag animate-in delay-1">Available for opportunities</div>
@@ -838,7 +862,6 @@
   <div class="projects-list">
 
     <a href="project-pharmacy.html" class="project-card reveal">
-      <div class="project-highlight">Group Project - SDGP</div>
       <h3 class="project-name">AI-Enhanced Pharmacy System</h3>
       <div class="project-type">Full Stack · UI Design</div>
       <p class="project-desc">
@@ -847,7 +870,6 @@
     </a>
 
     <a href="project-earthcare.html" class="project-card reveal">
-      <div class="project-highlight">UX/UI Design</div>
       <h3 class="project-name">EarthCare App</h3>
       <div class="project-type">Figma · UX Research</div>
       <p class="project-desc">
@@ -868,6 +890,14 @@
       <div class="project-type">Backend · Java</div>
       <p class="project-desc">
         REST API for rooms, sensors, and real-time data.
+      </p>
+    </a>
+
+    <a href="#top" class="project-card reveal">
+      <h3 class="project-name">Personal Portfolio Website</h3>
+      <div class="project-type">Frontend · UI/UX</div>
+      <p class="project-desc">
+        Designed and developed a responsive portfolio showcasing projects and case studies.
       </p>
     </a>
 
@@ -960,7 +990,7 @@
   <span>UI/UX · Frontend · <span>Sri Lanka</span></span>
   <span>© 2025</span>
 </footer>
-
+<a href="#top" class="back-to-top">↑</a>
 <script>
   // Custom cursor
   const cursor = document.getElementById('cursor');
