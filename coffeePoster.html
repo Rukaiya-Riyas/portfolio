@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR Coffee Shop — Rukaiya Riyas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --cream: #F5F0E8;
+  --cream-dark: #EDE6D6;
+
+  --ink: #1A1410;
+  --ink-soft: #3D3530;
+  --ink-muted: #6B5E56;
+
+  --coffee: #4E342E;
+  --coffee-light: #8D6E63;
+
+  --gold: #D7B899;
+  --gold-light: #E7D1BC;
+
+  --border: rgba(26,20,16,0.12);
+
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', sans-serif;
+  --mono: 'DM Mono', monospace;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 4rem;
+  backdrop-filter: blur(12px);
+  background: rgba(245,240,232,0.85);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 1.1rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nav-cta {
+  background: var(--ink);
+  color: white;
+  text-decoration: none;
+  padding: 0.7rem 1.3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.proj-hero {
+  min-height: 65vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 8rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(20,15,12,0.55), rgba(20,15,12,0.7)),
+    url('images/noir-poster.jpg') center/cover;
+  color: white;
+}
+
+.proj-hero-bg {
+  position: absolute;
+  font-family: var(--serif);
+  font-size: 18vw;
+  font-style: italic;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  pointer-events: none;
+}
+
+.proj-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 750px;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-family: var(--mono);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1rem;
+}
+
+.proj-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1;
+  margin-bottom: 0.3em;
+}
+
+.proj-title em {
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+.proj-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 1.5rem;
+}
+
+.proj-desc {
+  max-width: 620px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  text-decoration: none;
+  backdrop-filter: blur(10px);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+/* SECTIONS */
+.proj-section {
+  padding: 5rem 4rem;
+}
+
+.proj-section.dark {
+  background: #1A1410;
+  color: white;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--coffee-light);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 2rem;
+}
+
+.section-title em {
+  color: var(--coffee-light);
+  font-style: italic;
+}
+
+/* GRID */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+  gap: 1.5rem;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(78,52,46,0.12);
+  padding: 2rem;
+  border-radius: 18px;
+  transition: 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(78,52,46,0.12);
+}
+
+.dark .card {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.card-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--coffee-light);
+  margin-bottom: 0.7rem;
+}
+
+.card-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+
+.card-body {
+  line-height: 1.8;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.dark .card-body {
+  color: rgba(255,255,255,0.7);
+}
+
+/* IMAGE */
+.poster-image {
+  margin-top: 2rem;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+}
+
+.poster-image img {
+  width: 100%;
+  display: block;
+}
+
+/* TAGS */
+.tags-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.tech-tag {
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.7);
+  font-size: 0.72rem;
+  font-family: var(--mono);
+}
+
+.dark .tech-tag {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+}
+
+/* FOOTER */
+footer {
+  background: #1A1410;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.75rem;
+}
+
+@media (max-width:768px) {
+
+  nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .proj-hero {
+    padding: 7rem 1.5rem 3rem;
+  }
+
+  .proj-section {
+    padding: 4rem 1.5rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 0.6rem;
+    text-align: center;
+    padding: 1.5rem;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">RR</a>
+
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+
+  <a href="mailto:rukaiyarriyas119@gmail.com" class="nav-cta">Email</a>
+</nav>
+
+<!-- HERO -->
+<div class="proj-hero">
+
+  <div class="proj-hero-bg">NOIR</div>
+
+  <div class="proj-hero-content">
+
+    <div class="hero-tag">
+      Creative Poster Concept · Photopea Design
+    </div>
+
+    <h1 class="proj-title">
+      NOIR <em>Coffee</em>
+    </h1>
+
+    <p class="proj-subtitle">
+      Cinematic Café Advertisement Concept
+    </p>
+
+    <p class="proj-desc">
+      A self-initiated coffee advertisement poster created in Photopea to explore cinematic lighting, typography hierarchy, branding aesthetics, and promotional composition techniques.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- OVERVIEW -->
+<section class="proj-section">
+
+  <div class="section-label">Overview</div>
+
+  <h2 class="section-title">
+    Design <em>Concept</em>
+  </h2>
+
+  <div class="info-grid">
+
+    <div class="card">
+      <div class="card-label">Project Type</div>
+      <div class="card-title">Advertisement Concept</div>
+      <div class="card-body">
+        A practice branding and poster design project focused on creating a premium coffee shop visual identity and promotional aesthetic.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Main Focus</div>
+      <div class="card-title">Visual Hierarchy</div>
+      <div class="card-body">
+        Explored cinematic composition, product emphasis, typography balance, and mood-driven colour grading.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- POSTER IMAGE -->
+  <div class="poster-image">
+    <img src="coffeess.png" alt="NOIR Coffee Poster">
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section class="proj-section dark">
+
+  <div class="section-label">Skills Explored</div>
+
+  <h2 class="section-title">
+    Creative <em>Direction</em>
+  </h2>
+
+  <div class="card">
+
+    <div class="tags-wrap">
+      <span class="tech-tag">Poster Design</span>
+      <span class="tech-tag">Typography</span>
+      <span class="tech-tag">Branding</span>
+      <span class="tech-tag">Composition</span>
+      <span class="tech-tag">Colour Grading</span>
+      <span class="tech-tag">Product Advertising</span>
+      <span class="tech-tag">Visual Storytelling</span>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- OUTCOME -->
+<section class="proj-section">
+
+  <div class="section-label">Outcome</div>
+
+  <h2 class="section-title">
+    Final <em>Result</em>
+  </h2>
+
+  <div class="card">
+
+    <div class="card-body">
+      This project helped strengthen my understanding of branding-focused visual design, promotional layouts, and cinematic advertisement styling. It also improved my ability to create polished compositions and typography systems using Photopea.
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <span>Rukaiya Riyas</span>
+  <span>Creative Design · UI/UX · Sri Lanka</span>
+  <span>© 2025</span>
+</footer>
+
+</body>
+</html>
